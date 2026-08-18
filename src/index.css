@@ -1,43 +1,58 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Continued design system additions for controls, cards, tables, and utility helpers */
 
-:root {
-  --primary: #7C3AED;
-  --primary-dark: #5B21B6;
-  --primary-light: #A78BFA;
-  --accent: #3B82F6;
-  --green: #10B981;
-  --gold: #F59E0B;
-  --red: #EF4444;
-  --bg: #F8FAFC;
-  --surface: #FFFFFF;
-  --surface-alt: #F1F5F9;
-  --border: #E2E8F0;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
-}
+/* Card and control components */
+.card { background: var(--surface); padding: 16px; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(15,23,42,0.04); }
+.card-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+.search-input { padding: 9px 12px 9px 36px; border-radius: 8px; border: 1px solid var(--border); width: 100%; font-size: 14px; }
+.select-input { padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); font-size: 14px; }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-}
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); }
+.btn-ghost { background: transparent; color: var(--primary); border: none; }
+.btn-link { background: transparent; color: var(--accent); border: none; padding: 6px 10px; }
+.btn[disabled], .btn.disabled { opacity: 0.6; cursor: not-allowed; }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
-}
+/* Table wrappers */
+.table-wrapper { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; min-width: 720px; }
+.data-table thead { background: #f8fafc; }
+.data-table th, .data-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+.data-table tbody tr:hover { background: #fbfcfe; }
 
-button {
-  font-family: inherit;
-}
-/* patch: no-op */
+/* Badges */
+.badge { display:inline-flex; align-items:center; gap:6px; padding:4px 8px; border-radius:999px; font-size:12px; font-weight:600; }
+.badge--purple { background: rgba(167,139,250,0.12); color:#6b21a8; }
+.badge--blue { background: rgba(59,130,246,0.12); color:#1e40af; }
+.badge--slate { background: #f8fafc; color:#475569; }
+.badge--indigo { background: rgba(99,102,241,0.12); color:#3730a3; }
+
+/* Loading spinner */
+.loading-spinner { border-radius: 50%; border: 4px solid transparent; border-top-color: var(--primary); width: 40px; height: 40px; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Misc helpers */
+.flex { display: flex; }
+.flex-column { display: flex; flex-direction: column; }
+.gap-4 { gap: 16px; }
+.center { display:flex; align-items:center; justify-content:center; }
+
+/* Small layout helpers */
+.page { display: flex; flex-direction: column; gap: 20px; }
+.page-header { display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:12px; }
+.page-title { font-size: 20px; font-weight: 700; }
+
+/* Form helpers */
+.form-inline { display:flex; gap:12px; align-items:center; }
+.form-input { padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); width: 100%; }
+.form-label { font-size: 13px; color: var(--text-primary); font-weight: 600; }
+
+/* Responsive grid for user details column layout */
+.grid-1 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.grid-3-md { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 768px) { .grid-3-md { grid-template-columns: 320px 1fr; } }
+
+/* Utility: sr-only */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
