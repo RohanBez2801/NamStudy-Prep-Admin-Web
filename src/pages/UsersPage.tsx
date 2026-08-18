@@ -96,15 +96,17 @@ export default function UsersPage() {
               value={searchTerm}
               onChange={handleSearchChange}
               placeholder="Search by name or email..."
+              aria-label="Search users by name or email"
               className="pl-10 w-full rounded-md border border-slate-300 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
           
           <div className="flex items-center gap-2">
-            <Filter className="h-5 w-5 text-slate-400" />
+            <Filter className="h-5 w-5 text-slate-400" aria-hidden="true" />
             <select
               value={roleFilter}
               onChange={(e) => { setRoleFilter(e.target.value); setPage(1); }}
+              aria-label="Filter users by role"
               className="rounded-md border border-slate-300 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="">All Roles</option>
@@ -116,10 +118,11 @@ export default function UsersPage() {
 
           {isAdmin && (
             <div className="flex items-center gap-2">
-              <SchoolIcon className="h-5 w-5 text-slate-400" />
+              <SchoolIcon className="h-5 w-5 text-slate-400" aria-hidden="true" />
               <select
                 value={schoolFilter}
                 onChange={(e) => { setSchoolFilter(e.target.value); setPage(1); }}
+                aria-label="Filter users by school"
                 className="rounded-md border border-slate-300 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"
               >
                 <option value="">All Schools</option>
@@ -244,9 +247,10 @@ export default function UsersPage() {
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
+                    aria-label="Previous page"
                     className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-slate-300 bg-white text-sm font-medium text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span className="sr-only">Previous</span>
+                    <span className="sr-only">Previous page</span>
                     <ChevronLeft className="h-5 w-5" aria-hidden="true" />
                   </button>
                   <span className="relative inline-flex items-center px-4 py-2 border border-slate-300 bg-white text-sm font-medium text-slate-700">
@@ -255,9 +259,10 @@ export default function UsersPage() {
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
+                    aria-label="Next page"
                     className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-slate-300 bg-white text-sm font-medium text-slate-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span className="sr-only">Next</span>
+                    <span className="sr-only">Next page</span>
                     <ChevronRight className="h-5 w-5" aria-hidden="true" />
                   </button>
                 </nav>
